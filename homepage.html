@@ -1,9 +1,156 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Home Page</title>
-    </head>
-    <body>
-        <h1>WELCOME TO USOOL IMAN EXAM PAGE.</h1>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBT Web App</title>
+    <style>
+/* Basic reset and styles */
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.hero {
+    background-color: #007BFF;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #007BFF;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hero button:hover {
+    background-color: #e7e7e7;
+}
+
+#features {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+#features h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.feature-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.feature {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    flex-basis: 30%;
+}
+
+.feature h3 {
+    margin-bottom: 15px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>CBT Web App</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Tests</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Welcome to Usool Iman Online Assessment</h2>
+            <button onclick="window.location.href='log_in.html'">Get Started</button>
+        </section>
+
+        <section id="features">
+            <h2>Features</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <h3>User-Friendly Interface</h3>
+                    <p>Our platform is designed for ease of use, ensuring a smooth testing experience.</p>
+                </div>
+                <div class="feature">
+                    <h3>Secure and Reliable</h3>
+                    <p>Your data is safe with us. We prioritize security and reliability in our service.</p>
+                </div>
+                <div class="feature">
+                    <h3>Comprehensive Reporting</h3>
+                    <p>Get detailed results and feedback after every test to track your progress.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CBT Web App. All rights reserved.</p>
+    </footer>
+    
+    <script src="app.js"></script>
+</body>
 </html>
