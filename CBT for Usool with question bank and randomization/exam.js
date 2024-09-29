@@ -1,213 +1,176 @@
-// Full Question Bank
 const questionBank = [
-    {
-        question: "What is the capital of France?",
-        options: ["London", "Berlin", "Paris", "Rome"],
-        correctAnswer: "Paris"
-    },
-    {
-        question: "What is the largest planet in our solar system?",
-        options: ["Earth", "Jupiter", "Mars", "Venus"],
-        correctAnswer: "Jupiter"
-    },
-    {
-        question: "What language is primarily used for web development?",
-        options: ["Python", "JavaScript", "C#", "Java"],
-        correctAnswer: "JavaScript"
-    },
-    {
-        question: "What is the fastest land animal?",
-        options: ["Lion", "Cheetah", "Horse", "Eagle"],
-        correctAnswer: "Cheetah"
-    },
-    {
-        question: "What element does 'O' represent on the periodic table?",
-        options: ["Oxygen", "Gold", "Iron", "Helium"],
-        correctAnswer: "Oxygen"
-    },
+    { question: "What is the capital of France?", options: ["Berlin", "London", "Paris", "Madrid"], correctAnswer: "Paris" },
+    { question: "What is 2 + 2?", options: ["3", "4", "5", "6"], correctAnswer: "4" },
+    { question: "What is the capital of Spain?", options: ["Madrid", "Lisbon", "Rome", "Paris"], correctAnswer: "Madrid" },
+    { question: "What is 5 * 3?", options: ["15", "10", "20", "25"], correctAnswer: "15" },
+    { question: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Saturn"], correctAnswer: "Mars" },
+    { question: "What is the largest ocean on Earth?", options: ["Atlantic", "Indian", "Arctic", "Pacific"], correctAnswer: "Pacific" },
+    { question: "What language is primarily spoken in Brazil?", options: ["Spanish", "English", "Portuguese", "French"], correctAnswer: "Portuguese" },
+    { question: "Who wrote 'Hamlet'?", options: ["Shakespeare", "Dickens", "Austen", "Hemingway"], correctAnswer: "Shakespeare" },
+    { question: "What is the square root of 64?", options: ["6", "7", "8", "9"], correctAnswer: "8" },
+    { question: "Which element has the chemical symbol 'O'?", options: ["Oxygen", "Gold", "Iron", "Hydrogen"], correctAnswer: "Oxygen" },
     // Add more questions as needed
-    {
-        question: "Which ocean is the largest?",
-        options: ["Atlantic", "Pacific", "Indian", "Arctic"],
-        correctAnswer: "Pacific"
-    },
-    {
-        question: "What is the capital of Japan?",
-        options: ["Beijing", "Seoul", "Tokyo", "Bangkok"],
-        correctAnswer: "Tokyo"
-    },
-    {
-        question: "What year did World War II end?",
-        options: ["1945", "1918", "1939", "1963"],
-        correctAnswer: "1945"
-    },
-    {
-        question: "What is the boiling point of water?",
-        options: ["90°C", "100°C", "110°C", "80°C"],
-        correctAnswer: "100°C"
-    },
-    {
-        question: "Who wrote 'Hamlet'?",
-        options: ["Charles Dickens", "Jane Austen", "William Shakespeare", "Mark Twain"],
-        correctAnswer: "William Shakespeare"
-    }
 ];
 
-// Function to randomly select questions from the question bank
-function getRandomQuestions(questionBank, numQuestions) {
-    const shuffledQuestions = questionBank.sort(() => 0.5 - Math.random());
-    return shuffledQuestions.slice(0, numQuestions);
-}
-
-// Selected questions for the current exam
-let selectedQuestions = [];
-const numQuestionsInTest = 5; // Set how many questions you want in each test
-
-// Initialize variables
-let currentQuestionIndex = 0;
 let score = 0;
-const totalExamTime = 2 * 60 * 60; // 2 hours in seconds
-let timeLeft = totalExamTime;
-let timer;
+let currentQuestionIndex = 0;
+let selectedQuestions = [];
+let examTimer;
+let examDuration = 2 * 60 * 60; // 2 hours in seconds
+let userName;
+let answers = {}; // Object to store selected answers and whether the score was adjusted for each question
 
-// Display the first question
+function getRandomQuestions(bank, numQuestions) {
+    let shuffled = bank.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, numQuestions);
+}
+
 function loadQuestion() {
-    const currentQuestion = selectedQuestions[currentQuestionIndex];
-    document.getElementById('questionText').textContent = currentQuestion.question;
-    document.getElementById('label1').textContent = currentQuestion.options[0];
-    document.getElementById('label2').textContent = currentQuestion.options[1];
-    document.getElementById('label3').textContent = currentQuestion.options[2];
-    document.getElementById('label4').textContent = currentQuestion.options[3];
-    document.getElementById('option1').value = currentQuestion.options[0];
-    document.getElementById('option2').value = currentQuestion.options[1];
-    document.getElementById('option3').value = currentQuestion.options[2];
-    document.getElementById('option4').value = currentQuestion.options[3];
-}
-
-// Display the last score and score history
-function displayScores() {
-    const userName = document.getElementById('userName').value;
-    const lastScore = localStorage.getItem(`${userName}_lastScore`);
-    const scoreHistory = JSON.parse(localStorage.getItem(`${userName}_scoreHistory`)) || [];
-
-    if (lastScore !== null) {
-        document.getElementById('lastScore').textContent = `Your last score was: ${lastScore} out of ${selectedQuestions.length}`;
-    } else {
-        document.getElementById('lastScore').textContent = "No previous score found.";
-    }
-
-    const scoreList = document.getElementById('scoreList');
-    scoreList.innerHTML = ''; // Clear the list before adding new items
-    scoreHistory.forEach((entry, index) => {
-        const li = document.createElement('li');
-        li.textContent = `Attempt ${index + 1}: ${entry.score} out of ${selectedQuestions.length} (Time: ${entry.timestamp})`;
-        scoreList.appendChild(li);
-    });
-}
-
-// Start the exam
-document.getElementById('startExamButton').addEventListener('click', function() {
-    const userName = document.getElementById('userName').value;
-
-    if (userName.trim() === '') {
-        alert('Please enter your name to start the exam.');
-        return;
-    }
-
-    document.getElementById('startExamButton').disabled = true;
-    document.getElementById('userName').disabled = true;
-    document.getElementById('examForm').style.display = 'block';
-    
-    // Randomly select questions for this exam
-    selectedQuestions = getRandomQuestions(questionBank, numQuestionsInTest);
-    
-    loadQuestion();
-    startTimer();
-    displayScores(); // Display last score and history
-});
-
-// Handle form submission
-document.getElementById('examForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
-
-    const userName = document.getElementById('userName').value;
-    const selectedOption = document.querySelector('input[name="answer"]:checked');
-    
-    if (!selectedOption) {
-        document.getElementById('feedback').textContent = "Please select an answer.";
-        return;
-    }
-
-    const chosenAnswer = selectedOption.value;
-    const correctAnswer = selectedQuestions[currentQuestionIndex].correctAnswer;
-
-    if (chosenAnswer === correctAnswer) {
-        score++;
-        document.getElementById('feedback').textContent = "Correct!";
-        document.getElementById('feedback').style.color = "green";
-    } else {
-        document.getElementById('feedback').textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
-        document.getElementById('feedback').style.color = "red";
-    }
-
-    document.getElementById('score').textContent = `Score: ${score}`;
-    currentQuestionIndex++;
-
     if (currentQuestionIndex < selectedQuestions.length) {
-        setTimeout(() => {
-            document.getElementById('examForm').reset();
-            document.getElementById('feedback').textContent = "";
-            loadQuestion();
-        }, 1000);
+        const currentQuestion = selectedQuestions[currentQuestionIndex];
+
+        document.getElementById("questionText").textContent = currentQuestion.question;
+        document.getElementById("label1").textContent = currentQuestion.options[0];
+        document.getElementById("label2").textContent = currentQuestion.options[1];
+        document.getElementById("label3").textContent = currentQuestion.options[2];
+        document.getElementById("label4").textContent = currentQuestion.options[3];
+        document.getElementById("option1").value = currentQuestion.options[0];
+        document.getElementById("option2").value = currentQuestion.options[1];
+        document.getElementById("option3").value = currentQuestion.options[2];
+        document.getElementById("option4").value = currentQuestion.options[3];
+
+        const radioButtons = document.querySelectorAll('input[name="answer"]');
+        radioButtons.forEach(radio => radio.checked = false);
+
+        if (answers[currentQuestionIndex] !== undefined) {
+            radioButtons.forEach(radio => {
+                if (radio.value === answers[currentQuestionIndex].selectedAnswer) {
+                    radio.checked = true;
+                }
+            });
+        }
+
+        document.getElementById("prevButton").disabled = currentQuestionIndex === 0;
+        document.getElementById("nextButton").style.display = currentQuestionIndex === selectedQuestions.length - 1 ? "none" : "inline-block";
+        document.getElementById("submitButton").classList.toggle("hidden", currentQuestionIndex !== selectedQuestions.length - 1);
     } else {
-        clearInterval(timer);
-        document.getElementById('examForm').style.display = "none";
-        const feedbackMessage = `Quiz complete! Your final score is ${score} out of ${selectedQuestions.length}.`;
-        document.getElementById('feedback').textContent = feedbackMessage;
-        document.getElementById('feedback').style.color = "blue";
+        endExam();
+    }
+}
 
-        // Save the score in local storage
-        localStorage.setItem(`${userName}_lastScore`, score);
-
-        // Save the score to the score history
-        const timestamp = new Date().toLocaleString();
-        const scoreEntry = { score, timestamp };
-        let scoreHistory = JSON.parse(localStorage.getItem(`${userName}_scoreHistory`)) || [];
-        scoreHistory.push(scoreEntry);
-        localStorage.setItem(`${userName}_scoreHistory`, JSON.stringify(scoreHistory));
-        displayScores(); // Update score history
+document.getElementById("nextButton").addEventListener("click", function () {
+    submitAnswer();
+    if (currentQuestionIndex < selectedQuestions.length - 1) {
+        currentQuestionIndex++;
+        loadQuestion();
     }
 });
 
-// Timer function
+document.getElementById("prevButton").addEventListener("click", function () {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        loadQuestion();
+    }
+});
+
+function submitAnswer() {
+    const selectedOption = document.querySelector('input[name="answer"]:checked');
+    if (selectedOption) {
+        const selectedAnswer = selectedOption.value;
+        const correctAnswer = selectedQuestions[currentQuestionIndex].correctAnswer;
+        const prevAnswer = answers[currentQuestionIndex]?.selectedAnswer;
+
+        if (prevAnswer !== undefined) {
+            if (prevAnswer === correctAnswer && selectedAnswer !== correctAnswer) {
+                score--; // Correct answer changed to incorrect
+            } else if (prevAnswer !== correctAnswer && selectedAnswer === correctAnswer) {
+                score++; // Incorrect answer changed to correct
+            }
+        } else if (selectedAnswer === correctAnswer) {
+            score++; // New correct answer selected
+        }
+
+        answers[currentQuestionIndex] = { selectedAnswer, correctAnswer };
+        document.getElementById("feedback").textContent = selectedAnswer === correctAnswer ? "Correct!" : `Incorrect! The correct answer was: ${correctAnswer}`;
+        document.getElementById("score").textContent = `Score: ${score}`;
+    }
+}
+
 function startTimer() {
-    timer = setInterval(() => {
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            handleExamTimeout(); // Handle exam timeout
+    examTimer = setInterval(function () {
+        if (examDuration <= 0) {
+            clearInterval(examTimer);
+            endExam();
         } else {
-            const hours = Math.floor(timeLeft / 3600);
-            const minutes = Math.floor((timeLeft % 3600) / 60);
-            const seconds = timeLeft % 60;
-            document.getElementById('timer').textContent = `Time left: ${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            timeLeft--;
+            examDuration--;
+            const hours = Math.floor(examDuration / 3600);
+            const minutes = Math.floor((examDuration % 3600) / 60);
+            const seconds = examDuration % 60;
+            document.getElementById("timer").textContent = `Time Remaining: ${hours}:${minutes}:${seconds}`;
         }
     }, 1000);
 }
 
-function handleExamTimeout() {
-    document.getElementById('feedback').textContent = "Time's up! The exam has ended.";
-    document.getElementById('feedback').style.color = "red";
+document.getElementById("questionForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    submitAnswer();
+    endExam();
+});
 
-    // Disable form inputs
-    document.getElementById('examForm').style.display = "none";
-    const feedbackMessage = `Time's up! Your final score is ${score} out of ${selectedQuestions.length}.`;
-    document.getElementById('feedback').textContent = feedbackMessage;
-    document.getElementById('feedback').style.color = "blue";
+function endExam() {
+    clearInterval(examTimer);
 
-    // Save the score in local storage
-    const userName = document.getElementById('userName').value;
-    localStorage.setItem(`${userName}_lastScore`, score);
+    document.getElementById("examForm").style.display = "none";
+    document.getElementById("summary").style.display = "block";
+
+    const summaryList = document.getElementById("summaryList");
+    summaryList.innerHTML = "";
+    selectedQuestions.forEach((item, index) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${item.question} - Your answer: ${answers[index].selectedAnswer} - ${answers[index].selectedAnswer === answers[index].correctAnswer ? "Correct" : "Incorrect"}`;
+        summaryList.appendChild(listItem);
+    });
+
+    const finalScoreElement = document.getElementById("finalScore");
+    finalScoreElement.textContent = `Final Score: ${score} out of ${selectedQuestions.length}`;
+
+    saveScore(userName, score);
+    displayScoreHistory();
 }
 
-    // Save the score to
+function saveScore(name, score) {
+    let scoreHistory = JSON.parse(localStorage.getItem("scoreHistory")) || [];
+    scoreHistory.push({ name, score });
+    localStorage.setItem("scoreHistory", JSON.stringify(scoreHistory));
+}
+
+function displayScoreHistory() {
+    let scoreHistory = JSON.parse(localStorage.getItem("scoreHistory")) || [];
+    const scoreList = document.getElementById("scoreList");
+    scoreList.innerHTML = "";
+    scoreHistory.forEach(entry => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${entry.name}: ${entry.score}`;
+        scoreList.appendChild(listItem);
+    });
+
+    const lastScore = scoreHistory[scoreHistory.length - 1];
+    document.getElementById("lastScore").textContent = `Last Score: ${lastScore.name} - ${lastScore.score}`;
+}
+
+document.getElementById("startExamButton").addEventListener("click", function () {
+    userName = document.getElementById("userName").value;
+    if (userName) {
+        selectedQuestions = getRandomQuestions(questionBank, 5);
+        document.getElementById("examSection").style.display = "none";
+        document.getElementById("examForm").style.display = "block";
+        document.getElementById("summary").style.display = "block";
+
+        loadQuestion();
+        startTimer();
+        saveScore(userName, score);
+    displayScoreHistory();
+    } else {
+        alert("Please enter your name to start the exam.");
+    }
+});

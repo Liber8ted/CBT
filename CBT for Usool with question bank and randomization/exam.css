@@ -1,54 +1,119 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f4f4f9;
     margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 600px;
-    margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: #333;
 }
 
-h1 {
-    font-size: 24px;
+#summary, #examForm {
+    display: none;
+}
+
+h2, h3 {
     color: #333;
     text-align: center;
 }
 
-p {
-    font-size: 18px;
-    color: #555;
+#examSection, #examForm, #summary {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.input-group {
+#userName {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#navigationButtons button {
+    margin-right: 10px;
+}
+
+#navigationButtons #submitButton {
+    background-color: #28a745;
+}
+
+#navigationButtons #submitButton:hover {
+    background-color: #218838;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    display: inline-block;
     margin-bottom: 10px;
+    font-size: 16px;
 }
 
 input[type="radio"] {
     margin-right: 10px;
 }
 
-button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-.feedback {
+#feedback {
+    font-size: 18px;
     margin-top: 20px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+
+#score, #timer, #finalScore {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#summary ul, #scoreList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#summary li, #scoreList li {
+    background-color: #f1f1f1;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+    border-left: 4px solid #007bff;
+}
+
+#lastScore {
+    margin-top: 20px;
+    text-align: center;
     font-size: 18px;
     font-weight: bold;
+}
+
+#timer {
+    color: #dc3545;
 }

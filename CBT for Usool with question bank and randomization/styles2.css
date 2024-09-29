@@ -1,0 +1,11 @@
+.hidden {
+    display: none;
+}
+
+#examForm, #summary {
+    margin-top: 20px;
+}
+
+#timer, #score {
+    font-weight: bold;
+}

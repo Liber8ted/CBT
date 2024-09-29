@@ -3,53 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>CBT Web App</title>
+    <link rel="stylesheet" href="exam.css">
+    <style>
+        /* Add your CSS styles here 
+        .hidden {
+            display: none;
+        }
+        #summary, #examForm {
+            display: none;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }*/
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Exam</h1>
-        
-        <!-- User Name Input -->
-        <div>
-            <label for="userName">Enter your name:</label>
-            <input type="text" id="userName" placeholder="Your Name">
-            <button id="startExamButton">Start Exam</button>
-        </div>
-        
-        <!-- Last Score Display -->
-        <p id="lastScore"></p>
-        
-        <!-- Score History Display -->
-        <div id="scoreHistory">
-            <h3>Score History</h3>
-            <ul id="scoreList"></ul>
-        </div>
-        
-        <!-- Exam Form -->
-        <p id="score">Score: 0</p>
-        <p id="timer">Time left: 2:00:00</p>
-        <form id="examForm" style="display:none;">
-            <p id="questionText"></p>
-            <div class="input-group">
+    <div id="examSection">
+        <h2>Welcome to the CBT Exam</h2>
+        <label for="userName">Enter your name:</label>
+        <input type="text" id="userName" required>
+        <button id="startExamButton">Start Exam</button>
+    </div>
+
+    <div id="examForm">
+        <h3 id="questionText">Question will be displayed here</h3>
+        <form id="questionForm">
+            <div>
                 <input type="radio" id="option1" name="answer" value="">
-                <label for="option1" id="label1"></label>
+                <label for="option1" id="label1">Option 1</label>
             </div>
-            <div class="input-group">
+            <div>
                 <input type="radio" id="option2" name="answer" value="">
-                <label for="option2" id="label2"></label>
+                <label for="option2" id="label2">Option 2</label>
             </div>
-            <div class="input-group">
+            <div>
                 <input type="radio" id="option3" name="answer" value="">
-                <label for="option3" id="label3"></label>
+                <label for="option3" id="label3">Option 3</label>
             </div>
-            <div class="input-group">
+            <div>
                 <input type="radio" id="option4" name="answer" value="">
-                <label for="option4" id="label4"></label>
+                <label for="option4" id="label4">Option 4</label>
             </div>
-            <button type="submit">Submit Answer</button>
+            <div id="navigationButtons">
+                <button type="button" id="prevButton">Previous</button>
+                <button type="button" id="nextButton">Next</button>
+                <button type="submit" id="submitButton" class="hidden">Submit</button>
+            </div>
         </form>
-        <p id="feedback" class="feedback"></p>
+        <p id="feedback"></p>
+        <p id="score">Score: 0</p>
+        <p id="timer">Time Remaining: 2:00:00</p>
+    </div>
+
+    <div id="summary">
+        <h2>Exam Summary</h2>
+        <ul id="summaryList"></ul>
+        <p id="finalScore"></p>
+        <h3>Score History</h3>
+        <ul id="scoreList"></ul>
+        <p id="lastScore"></p>
     </div>
 
     <script src="exam.js"></script>
