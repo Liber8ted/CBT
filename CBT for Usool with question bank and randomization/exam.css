@@ -1,119 +1,143 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 20px;
+  color: #333;
 }
 
-#summary, #examForm {
-    display: none;
+#summary,
+#examForm {
+  display: none;
 }
 
-h2, h3 {
-    color: #333;
-    text-align: center;
+h2,
+h3 {
+  color: #333;
+  text-align: center;
 }
 
-#examSection, #examForm, #summary {
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+#examSection,
+#examForm,
+#summary {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #userName {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 #navigationButtons button {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 #navigationButtons #submitButton {
-    background-color: #28a745;
+  background-color: #28a745;
 }
 
 #navigationButtons #submitButton:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 label {
-    display: inline-block;
-    margin-bottom: 10px;
-    font-size: 16px;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 input[type="radio"] {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 #feedback {
-    font-size: 18px;
-    margin-top: 20px;
+  font-size: 18px;
+  margin-top: 20px;
 }
 
 .correct {
-    color: green;
+  color: green;
 }
 
 .incorrect {
-    color: red;
+  color: red;
 }
 
-#score, #timer, #finalScore {
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 20px;
-    text-align: center;
+#score,
+#timer,
+#finalScore {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
 }
 
-#summary ul, #scoreList {
-    list-style-type: none;
-    padding: 0;
+#summary ul,
+#scoreList {
+  list-style-type: none;
+  padding: 0;
 }
 
-#summary li, #scoreList li {
-    background-color: #f1f1f1;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 4px;
-    border-left: 4px solid #007bff;
+#summary li,
+#scoreList li {
+  background-color: #f1f1f1;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border-left: 4px solid #007bff;
 }
 
 #lastScore {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 #timer {
-    color: #dc3545;
+  color: #dc3545;
+}
+
+/* Style for answered questions */
+button.answered {
+  background-color: #4caf50; /* Green background */
+  color: white;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
 }
