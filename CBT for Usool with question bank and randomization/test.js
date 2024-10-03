@@ -24,6 +24,86 @@ const questionBank = [
     options: ["Earth", "Mars", "Jupiter", "Saturn"],
     correctAnswer: "Mars",
   },
+  {
+    question: "Who wrote 'Hamlet'?",
+    options: ["Shakespeare", "Chaucer", "Dickens", "Austen"],
+    correctAnswer: "Shakespeare",
+  },
+  {
+    question: "What is the square root of 64?",
+    options: ["6", "7", "8", "9"],
+    correctAnswer: "8",
+  },
+  {
+    question: "What is the chemical symbol for water?",
+    options: ["O2", "CO2", "H2O", "HO"],
+    correctAnswer: "H2O",
+  },
+  {
+    question: "What year did World War II end?",
+    options: ["1940", "1945", "1939", "1950"],
+    correctAnswer: "1945",
+  },
+  {
+    question: "Which element has the atomic number 1?",
+    options: ["Helium", "Oxygen", "Hydrogen", "Carbon"],
+    correctAnswer: "Hydrogen",
+  },
+  {
+    question: "Who was the first President of the United States?",
+    options: [
+      "Abraham Lincoln",
+      "John Adams",
+      "George Washington",
+      "Thomas Jefferson",
+    ],
+    correctAnswer: "George Washington",
+  },
+  {
+    question: "What is the speed of light?",
+    options: ["300,000 km/s", "150,000 km/s", "500,000 km/s", "1,000 km/s"],
+    correctAnswer: "300,000 km/s",
+  },
+  {
+    question: "Which language is primarily spoken in Brazil?",
+    options: ["Spanish", "Portuguese", "French", "German"],
+    correctAnswer: "Portuguese",
+  },
+  {
+    question: "How many continents are there?",
+    options: ["5", "6", "7", "8"],
+    correctAnswer: "7",
+  },
+  {
+    question: "Which organ pumps blood through the body?",
+    options: ["Brain", "Lungs", "Heart", "Kidneys"],
+    correctAnswer: "Heart",
+  },
+  {
+    question: "What is the largest mammal?",
+    options: ["Elephant", "Whale", "Shark", "Giraffe"],
+    correctAnswer: "Whale",
+  },
+  {
+    question: "Which planet is closest to the sun?",
+    options: ["Earth", "Mercury", "Mars", "Venus"],
+    correctAnswer: "Mercury",
+  },
+  {
+    question: "How many degrees are in a circle?",
+    options: ["360", "180", "90", "45"],
+    correctAnswer: "360",
+  },
+  {
+    question: "What is the longest river in the world?",
+    options: ["Amazon", "Nile", "Mississippi", "Yangtze"],
+    correctAnswer: "Nile",
+  },
+  {
+    question: "In which year did the Titanic sink?",
+    options: ["1912", "1920", "1905", "1930"],
+    correctAnswer: "1912",
+  },
 ];
 
 let score = 0;
