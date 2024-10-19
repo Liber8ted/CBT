@@ -1,13 +1,30 @@
 body {
-  background: url("pics/ICT.jpg");
-  background-repeat: no-repeat;
-  background-size: 1400px 700px;
-
+  background-color: #020144;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
   margin: 0;
   padding: 20px;
-  color: #333;
+}
+#sideLogo {
+  height: auto;
+  float: right;
+  width: 110px;
+}
+
+#mainLogo {
+  height: 100px;
+  float: left;
+  width: 300px;
+}
+
+#he1 {
+  color: white;
+  font-family: "Montserrat", "Raleway";
+  font-weight: 500px; /* Bold */
+  font-size: 2em;
+}
+
+#startExamButton {
+  background-color: goldenrod;
 }
 
 h2,
@@ -16,21 +33,31 @@ h3 {
   text-align: center;
 }
 
-#examForm,
+#examForm {
+  display: none;
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 #summary {
   display: none;
   max-width: 600px;
   margin: 20px auto;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #examSection {
-  margin: 200px auto;
-  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  margin: 140px auto;
+  background: rgba(255, 255, 255, 0.137); /* Semi-transparent white */
   border-radius: 10px; /* Rounded corners */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Optional light border */
   backdrop-filter: blur(10px); /* Blurs the background behind the div */
@@ -38,8 +65,8 @@ h3 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
   padding: 20px;
   color: white;
-  width: 500px;
-  height: 200px;
+  width: 700px;
+  height: 230px;
   justify-content: left;
   align-items: left;
   text-align: left;
@@ -47,7 +74,7 @@ h3 {
 }
 
 #userName {
-  width: calc(100% - 22px);
+  width: calc(100% - 100px);
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ccc;
@@ -55,18 +82,8 @@ h3 {
   font-size: 16px;
 }
 
-button {
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
 button:hover {
-  background-color: #0056b3;
+  opacity: 0.8;
 }
 
 #navigationButtons button {
@@ -74,11 +91,11 @@ button:hover {
 }
 
 #navigationButtons #submitButton {
-  background-color: #28a745;
+  background-color: #020144;
 }
 
 #navigationButtons #submitButton:hover {
-  background-color: #218838;
+  background-color: #060488;
 }
 
 .hidden {
@@ -88,11 +105,21 @@ button:hover {
 label {
   display: inline-block;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-family: "Lora", serif;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 input[type="radio"] {
   margin-right: 10px;
+}
+
+input {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 #feedback {
@@ -145,20 +172,30 @@ input[type="radio"] {
 
 /* Style for answered questions */
 button.answered {
-  background-color: #4caf50; /* Green background */
+  background-color: goldenrod; /* Green background */
   color: white;
 }
 
 button {
   margin: 5px;
-  padding: 10px;
   cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.8;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: #020144;
+  cursor: pointer;
 }
 
 #foot {
   background-color: blue;
+}
+
+footer {
+  color: white;
+  text-align: center;
+  letter-spacing: 8px;
 }

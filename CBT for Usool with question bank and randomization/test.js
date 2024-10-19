@@ -1,5 +1,6 @@
 const questionBank = [
   {
+    Image: "",
     question: "What is the capital of France?",
     options: ["Berlin", "London", "Paris", "Madrid"],
     correctAnswer: "Paris",
@@ -280,22 +281,30 @@ function endExam() {
   displayScoreHistory();
 }
 
+// Function to save user score with time and date
 function saveScore(name, score) {
+  const currentDate = new Date();
+  const dateString = currentDate.toLocaleDateString();
+  const timeString = currentDate.toLocaleTimeString();
+
   let scoreHistory = JSON.parse(localStorage.getItem("scoreHistory")) || [];
-  scoreHistory.push({ name, score });
+  scoreHistory.push({ name, score, date: dateString, time: timeString });
   localStorage.setItem("scoreHistory", JSON.stringify(scoreHistory));
 }
 
+// Function to display user score history with time and date
 function displayScoreHistory() {
   let scoreHistory = JSON.parse(localStorage.getItem("scoreHistory")) || [];
   const scoreList = document.getElementById("scoreList");
   scoreList.innerHTML = "";
+
   const currentUserScores = scoreHistory.filter(
     (entry) => entry.name === userName
   );
+
   currentUserScores.forEach((entry) => {
     const listItem = document.createElement("li");
-    listItem.textContent = `${entry.name}: ${entry.score}`;
+    listItem.textContent = `${entry.name}: ${entry.score} - Date: ${entry.date} - Time: ${entry.time}`;
     scoreList.appendChild(listItem);
   });
 
@@ -303,7 +312,7 @@ function displayScoreHistory() {
     const lastScore = currentUserScores[currentUserScores.length - 1];
     document.getElementById(
       "lastScore"
-    ).textContent = `Last Score: ${lastScore.name} - ${lastScore.score}`;
+    ).textContent = `Last Score: ${lastScore.name} - ${lastScore.score} - Date: ${lastScore.date} - Time: ${lastScore.time}`;
   }
 }
 
@@ -316,6 +325,9 @@ document
       document.getElementById("examSection").style.display = "none";
       document.getElementById("examForm").style.display = "block";
       document.getElementById("summary").style.display = "none";
+      document.getElementById("body").style.backgroundColor = "#030269";
+      document.getElementById("logoSide").style.display = "none";
+      document.getElementById("footer1").style.display = "none";
 
       loadQuestion();
       startTimer();
@@ -323,3 +335,46 @@ document
       alert("Please enter your name to start the exam.");
     }
   });
+
+// Function to clear score history for the current user after password confirmation
+function clearUserScoreHistoryWithPassword(name) {
+  const password = prompt("Enter your password to clear score history:");
+
+  // Replace 'yourPassword' with the actual password you want to use
+  if (password === "admin123") {
+    let scoreHistory = JSON.parse(localStorage.getItem("scoreHistory")) || [];
+    scoreHistory = scoreHistory.filter((entry) => entry.name !== name);
+    localStorage.setItem("scoreHistory", JSON.stringify(scoreHistory));
+
+    alert("Score history cleared successfully!");
+    document.getElementById("scoreList").innerHTML = ""; // Clear displayed score history on the page
+  } else {
+    alert("Incorrect password. Score history not cleared.");
+  }
+}
+
+// Function to display score history of all users
+function displayAllUsersScoreHistory() {
+  let scoreHistory = JSON.parse(localStorage.getItem("scoreHistory")) || [];
+  const scoreList = document.getElementById("scoreList");
+  scoreList.innerHTML = "";
+
+  if (scoreHistory.length === 0) {
+    scoreList.innerHTML = "<li>No scores found.</li>";
+  } else {
+    scoreHistory.forEach((entry) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = `${entry.name}: ${entry.score} - Date: ${entry.date} - Time: ${entry.time}`;
+      scoreList.appendChild(listItem);
+    });
+  }
+}
+// Function to retry the test
+function refreshPage() {
+  const password2 = prompt("Enter your password to retry the test:");
+  if (password === "admin123") {
+    location.reload();
+  } else {
+    alert("Incorrect password. Contact your supervisor");
+  }
+}
