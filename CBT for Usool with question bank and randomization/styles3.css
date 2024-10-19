@@ -1,0 +1,201 @@
+body {
+  background-color: #020144;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+#sideLogo {
+  height: auto;
+  float: right;
+  width: 110px;
+}
+
+#mainLogo {
+  height: 100px;
+  float: left;
+  width: 300px;
+}
+
+#he1 {
+  color: white;
+  font-family: "Montserrat", "Raleway";
+  font-weight: 500px; /* Bold */
+  font-size: 2em;
+}
+
+#startExamButton {
+  background-color: goldenrod;
+}
+
+h2,
+h3 {
+  color: #333;
+  text-align: center;
+}
+
+#examForm {
+  display: none;
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#summary {
+  display: none;
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#examSection {
+  margin: 140px auto;
+  background: rgba(255, 255, 255, 0.137); /* Semi-transparent white */
+  border-radius: 10px; /* Rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Optional light border */
+  backdrop-filter: blur(10px); /* Blurs the background behind the div */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  padding: 20px;
+  color: white;
+  width: 700px;
+  height: 230px;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+  font-size: 18px;
+}
+
+#userName {
+  width: calc(100% - 100px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#navigationButtons button {
+  margin-right: 10px;
+}
+
+#navigationButtons #submitButton {
+  background-color: #020144;
+}
+
+#navigationButtons #submitButton:hover {
+  background-color: #060488;
+}
+
+.hidden {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-family: "Lora", serif;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+input {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#feedback {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
+
+#score,
+#timer,
+#finalScore {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#summary ul,
+#scoreList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#summary li,
+#scoreList li {
+  background-color: #f1f1f1;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border-left: 4px solid #007bff;
+}
+
+#lastScore {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#timer {
+  color: #dc3545;
+}
+
+/* Style for answered questions */
+button.answered {
+  background-color: goldenrod; /* Green background */
+  color: white;
+}
+
+button {
+  margin: 5px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: #020144;
+  cursor: pointer;
+}
+
+#foot {
+  background-color: blue;
+}
+
+footer {
+  color: white;
+  text-align: center;
+  letter-spacing: 8px;
+}

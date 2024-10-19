@@ -1,14 +1,13 @@
 body {
+  background: url("pics/ICT.jpg");
+  background-repeat: no-repeat;
+  background-size: 1400px 700px;
+
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
   margin: 0;
   padding: 20px;
   color: #333;
-}
-
-#summary,
-#examForm {
-  display: none;
 }
 
 h2,
@@ -17,9 +16,9 @@ h3 {
   text-align: center;
 }
 
-#examSection,
 #examForm,
 #summary {
+  display: none;
   max-width: 600px;
   margin: 20px auto;
   background-color: #fff;
@@ -27,6 +26,24 @@ h3 {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#examSection {
+  margin: 200px auto;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  border-radius: 10px; /* Rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Optional light border */
+  backdrop-filter: blur(10px); /* Blurs the background behind the div */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  padding: 20px;
+  color: white;
+  width: 500px;
+  height: 200px;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+  font-size: 18px;
 }
 
 #userName {

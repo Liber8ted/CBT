@@ -4,18 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CBT Web App</title>
-    <link rel="stylesheet" href="styles2.css" />
+    <link rel="stylesheet" href="styles3.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lora:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body id="bod1">
+  <body id="body">
+    <div id="logoSide">
+      <img src="pics/usool logo.png" alt="usool side logo" id="sideLogo" />
+      <img
+        src="pics/usool second logo.png"
+        alt="usool main logo"
+        id="mainLogo"
+      />
+      <div id="summaryHeading" style="display: none">
+        <img
+          src="pics/usool logo white and black.png"
+          alt="Usoolul iman Logo"
+          id="blackLogo"
+        />
+      </div>
+    </div>
     <div id="examSection">
-      <h2>Welcome to the CBT Exam</h2>
-      <label for="userName">Enter your name:</label>
-      <input type="text" id="userName" required />
+      <h2 id="he1">Online Assessment</h2>
+      <label for="userName">Name:</label>
+      <input type="text" id="userName" placeholder="Enter your name" />
+      <br />
       <button id="startExamButton">Start Exam</button>
     </div>
 
     <div id="examForm">
-      <h3 id="questionText">Question will be displayed here</h3>
+      <img
+        src=""
+        alt="pic_illustration"
+        id="QImage"
+        width="100px"
+        height="100px"
+      />
+      <h2 id="questionText">Question will be displayed here</h2>
       <form id="questionForm">
         <div>
           <input type="radio" id="option1" name="answer" value="" />
@@ -61,6 +88,7 @@
       </div>
     </div>
 
-    <script src="test2.js"></script>
+    <script src="test3.js"></script>
+    <footer id="footer1"><i>..........Nuturing a Balanced Ummah</i></footer>
   </body>
 </html>

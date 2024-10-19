@@ -1,5 +1,6 @@
 const questionBank = [
   {
+    Image: "",
     question: "What is the capital of France?",
     options: ["Berlin", "London", "Paris", "Madrid"],
     correctAnswer: "Paris",
@@ -324,7 +325,9 @@ document
       document.getElementById("examSection").style.display = "none";
       document.getElementById("examForm").style.display = "block";
       document.getElementById("summary").style.display = "none";
-      document.getElementById("bod1").style.backgroundImage = "none";
+      document.getElementById("body").style.backgroundColor = "#030269";
+      document.getElementById("logoSide").style.display = "none";
+      document.getElementById("footer1").style.display = "none";
 
       loadQuestion();
       startTimer();
